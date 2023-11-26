@@ -1,0 +1,284 @@
+welcome to react class 
+
+1.createRoot : 
+
+createRoot used to render the specific container of HTML tag in inside of that.
+
+let container = document.getElementById("root") // root  is the index.html's one of the  div id
+let root = ReactDOM.createRoot(container)
+root.render(<h1>Hi, helloworld!</h1>) // in the render refers to the renderer of the page (browser).
+
+2.Components :
+
+It is basically dividing the page into multiple pieces like header, content body and footer.
+
+1 st need to create a new folder in same project folder under src and adding new files in the extensions of .jsx(javascript eXtensible)
+
+importing "name" 1st letter should be in the upperCase and needs to be mention right file path needs to be mention in "from" afterwords.
+
+3.jsx :
+
+*note : while using the jsx file, if u want to add the css property in the element need to mention "className" instead of "class" not like we used in the html file.
+
+we can do js expression inbetween the html tags in the jsx  file by using the { } curly brackets.
+
+ex: { 2+2 } if we pass the null value it doesn't render any of the content.
+
+4.Condional formatting :
+
+in jsx we can short  circuit the conditions like console.log(false && true) it logs the falsy value. if it is true it will logs the last truthy value.
+
+5.props :
+
+props is the in-build Components in the react. It helps us to pass the values dynamically in the one jsx file to the main jsx file attached in the index.js file.
+
+ex : 
+ 
+ under custom "Components" new file 
+
+ write a function custom(props){
+  return <h1> Hi, I'm {props.name}</h1> //--- jsx js expression {props.name}
+}
+
+And this props is basically a set of obj which is stored the data as key value pairs.
+
+in main jsx file need to mention the props key as <Content name="Starc Lee"/>
+  //--- we can also set the name from the {js expression} by use this
+
+6. eventListener : 
+
+eventListener is a function which is called whatever the event needs to be take  place in the certain tag. 
+
+ex. let i = 1
+function btn(){
+  console.log("Hi...There...."+i)
+  i++
+}
+
+takes place inside the exporting function html tag :
+
+"<button onClick={btn}>Click here</button> "
+
+// btn is a function which is returning the value or  console message whatever we need to present there.
+
+in "onClick" needs to mention whaterver the event needs to be happend in the eventListener clearly mention that in the Caps after the "on"-"Click"
+
+7.useState : hook function
+
+it's nothing but the react stores the past state  of values using the in-build function of useState.
+
+whenever using useState react app function name will be Caps.
+
+ex. function App(){
+   // for state variables must use const, it's not updated, it's again created.
+  const [counter,setCounter] = useState(100)
+    function use(){
+      setCounter(2)
+    }
+  return <div>
+    <Header />
+    <Custom name= {`${"Starc Lee "+counter}`} />
+    <button onClick={use}>Click here</button>
+    
+  </div>
+} 
+
+
+if setCounter({value==="function"}) ? setCounter(function(oldValue)) : setCounter(value)
+
+if new value depends on the older value use the functional updatation method to update new value.
+
+ex. setCounter(oldvalue => oldValue + 1)
+
+8. useState functional update & random quote generator example:
+
+helps to  regain the  useState hook
+
+9. useEffect :
+
+it's an side effect of the  useState hook. It's actually render the values whatever we needs to be done inside the useEffect hook. it has two part. one is anonymous function and the other is dependancy array.
+
+ex. useEffect((){
+console.log("Hi...")
+},[])
+
+if we won't give the counter inside the dependancy array, it will be console log the value what we have logged inside the anonymous function. whenever we use the setCounter it doesn't take care of that. if incase we gave the counter inside the dependancy array it will always render's the value whenever call the setCounter.
+
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
+
+
+10. todo app creation : 
+
+10.1. Add Todo List
+
+store value in the input field using value parameter in the input tag.
+using onChange event to store value in the initial value of useState. and push it into the array of string values. and then show that in the dom render.
+
+ex. onChange(event=>setTask(event.target.value))
+
+for enter key value pushing that while check the onKeyDown event has some kind of in-build properties has to be given. so we can check the keyCode===13 means we can push the typed value into the list of item we have to shown in the dom.
+
+ex.  onKeyDown={(event) => {
+     if (event["keyCode"] === 13) {
+        buttonClick();
+      }
+    }}
+
+if in case we can go with older method which is already in html using "form".
+
+in form needs to be one button must be present to perform the add the details into the places wherever we need that in the dom.
+
+while doing that button type must be in "submit" and we can skip the button onClick event & onKeyDown event. the worst case is form having the default behaviour of the refresh the page and do the onclick which is what we have done in previously. 
+
+we can also prevent that using "event.preventDefult()" in pushing function. we can mention that function in the form's onSubmit event.
+
+ex. <form onSubmit={function} /> .
+
+it will be more efficient in preformation based and pretty much less js codes.
+
+10.2. delete Todo Item : 
+
+deletion done by using the id of the Todo. and it has been generated uniquely. 
+
+11 . routing intro : 
+
+routing in the react requires the react-router-dom package.
+
+then the dom has the two things : BrowserRouter and Route 
+
+the BrowserRouter needs to be parent element in the return part of the App.jsx file
+Route used to mention the Route path.
+
+ex:  <BrowserRouter>
+      <Route path="/counter">
+        <div></div>
+      </Route>
+    </BrowserRouter>
+
+    according to to the React v6 Route needs to be wrap up within the Routes.
+    Additionally, Route has to props: path and element 
+
+    path will be the routing path of the page & element will be render the content what we have needs to be render in the given path.
+
+    revised ex:
+
+     <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/counter" element={<h1>Hii, Counter</h1>} />
+        </Routes>
+      </BrowserRouter>
+      <h2>Hii, Hello</h2>
+    </div>
+
+
+    it's not gonna help u to redirect the page because it requires the index.html page needs to be link to that page. so we import Link too.  
+
+    ex: 
+     <BrowserRouter>
+        <Link to="/counter">One</Link> -- needs to be close.
+        
+        inside the BrowserRouter tag need to be mention the path inside the link tag.
+  
+  12. exact route match : 
+
+  put the exact attribute in the Route tag after the  path.
+
+  ex:<Route
+        path="/counter"
+        exact={true} />
+
+  13. dynamic routes : 
+
+  for dynamic route, we can do that with the help of useParams hook in the react.
+
+  ex: const { userName } = useParams(); -- it can be defined in the Components fucn.
+
+  <Route path="/user/:id" element={<UserProfile />} />
+
+In React Router, useParams() is a hook used to access the parameters (or route match parameters) from the current route. When a URL contains dynamic segments defined by :paramName in the route path, useParams() allows you to access the values of these parameters.
+
+ 14. http requests in react:
+ ex: used in the user Component file.
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/users.json"); // Fetch from the public folder
+        const data = await response.json(); // Parse JSON data
+        setUserData(data[userName]); // Set the data in state
+      } catch (error) {
+        console.error("Error fetching JSON:", error);
+      }
+    }
+    fetchData();
+  }, [userName]);
+
+  received json data displayed like this,
+
+  ex:
+   <div>
+      <h1>My name is {userData?.name}</h1>
+      <li>Name : {userData?.name}</li>
+      <li>age : {userData?.age}</li>
+    </div>
+
+
+Code with Mosh Class notes started from here on :
+
+React is a library. Angular & Vue is a framework.
+
+Library is a tool has a specific functionality.
+framework is a set of tools and guidelines for building apps.
+
+react is only used for creating the dynamic & interactive User interfaces.
+
+Additionally: routing, http, managing the app state, form validation, internationalization, animations.
+
+summary pdf already added in this folder check it out (Getting started with react.pdf).
+
+Building Components:
+
+first installed the bootstrap package and mention that in main.tsx file.
+
+ex: import 'bootstrap/dist/css/bootstrap.css'
+
+it turns the font into different one.
+
+creating Component folder inside the src folder.
+
+instead of wraping the all elements in div at returning place, we can wrap up with the "Fragment" tag from the react.
+
+we can also acheive this using the empty start and close tags
+ex: <> 
+          </>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
