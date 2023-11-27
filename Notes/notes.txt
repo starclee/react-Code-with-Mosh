@@ -225,7 +225,7 @@ In React Router, useParams() is a hook used to access the parameters (or route m
     </div>
 
 
-Code with Mosh Class notes started from here on :
+********* Code with Mosh Class notes started from here on ************
 
 React is a library. Angular & Vue is a framework.
 
@@ -238,7 +238,7 @@ Additionally: routing, http, managing the app state, form validation, internatio
 
 summary pdf already added in this folder check it out (Getting started with react.pdf).
 
-Building Components:
+/////// Building Components:
 
 first installed the bootstrap package and mention that in main.tsx file.
 
@@ -254,7 +254,61 @@ we can also acheive this using the empty start and close tags
 ex: <> 
           </>
 
-          
+/////// Conditonal rendering:
+ condtional rendering {items.length===0 && <p>No items found</p>}
+
+ if the condition is true, the && afterwords part will be executed or else it returns nothing.
+
+/////// handling event:
+
+in typeScript we can mention the type annotaion to mention our variables type.
+
+ex: import {MouseEvent} from react
+
+(event.MouseEvent) => console.log(event.target)
+
+And each Component has its own state.// note that*
+
+//////// passing data via props:
+
+we can use the props in typeScript using the interface method to mention the object type values.
+
+ex: 
+interface Props {
+  items: string[]; // array
+  title: string;
+  onSelectedItem: (item: string) => void; // func
+}
+
+function ListGroup({ items, title, onSelectedItem }: Props){
+  ................................
+} // we can use them in the Component func.
+
+we can handle that in App.tsx file like this:
+
+ex:
+
+  const handleSelectEvent = (item: string) => {
+    console.log("Selected item: " + item);
+  };
+  return (
+    <div>
+      <ListGroup
+        items={items}
+        title="Players"
+        onSelectedItem={handleSelectEvent} // event handled...
+      />
+    </div>
+  );
+
+
+              Props        -         state
+  i/p passed to Component  - data managed by a Component internally
+  immutable                - mutable
+  similar to func args     - similar to local variables.
+        re-render a Component and update the DOM (common factor).
+
+////// passing children :
 
 
 
