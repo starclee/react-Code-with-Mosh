@@ -310,6 +310,52 @@ ex:
 
 ////// passing children :
 
+in App file we can give the Children as html attributes as well using the children parameter.
+
+function App() {
+  return (
+    <div>
+      <Alert>
+        Hello <b>Starc</b>
+      </Alert>
+    </div>
+  );
+}
+
+in Component file:
+
+we can mention the children in interface method and mention it type as "ReactNode" and give into the function as like props.
+
+for sake of the style we have use the bootstrap className:"alert alert-primary".
+
+ex:
+
+interface Props {
+  children: ReactNode;
+}
+
+const Alert = ({ children }: Props) => {
+  return <div className="alert alert-primary">{children}</div>;
+};
+
+
+///// react developer tools extension is useful to view source code and parent element.
+
+////// exercise : button 
+
+we can make optional of the type annotation in  the interface method using "lis"?: and we can set the values might be came in the variable. by setting example values like "" ? : "one" | "two" | "three"
+
+///// exercise : alert hide and show using button
+
+using state varibales and updating it's state will help to acheive this kind of works. tried well first attempt.
+
+summary pdf added in notes of this chapter 2.
+
+chapter 2 : The End
+
+////////// chapter 3 : styling Components //////////////////////
+
+
 
 
 
