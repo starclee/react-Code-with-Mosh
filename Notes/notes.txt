@@ -349,11 +349,60 @@ we can make optional of the type annotation in  the interface method using "lis"
 
 using state varibales and updating it's state will help to acheive this kind of works. tried well first attempt.
 
-summary pdf added in notes of this chapter 2.
+summary pdf added - notes of this chapter 2.
 
 chapter 2 : The End
 
 ////////// chapter 3 : styling Components //////////////////////
+
+3. css module : 
+
+while using vanila css, may be we get the class name clashes in the App.tsx.
+so we can mention the file name as "file.module.css" instead of "file.css"
+
+and then we can import that in App.tsx like
+import styles from "file.module.css"
+
+if we using like this we can took that styles from mentioning obj property from that. className={styles="list"} // list css property name.
+
+need to mention the two  or more 
+classNames = [styles.list, styles.grp].join(" ") /// more useful.
+
+4. css in js : 
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+const ListItem = styled.li<ListItemProps>`
+  padding: 5px 0;
+  background: ${(props) => (props.active ? "teal" : "none")};
+`;
+
+writing the css properties in jsx file.
+
+using above written css,
+
+ex: 
+      <List>
+        {items.map((item, i) => {
+          return (<ListItem
+              active={i === selectedIndex}
+              key={i}
+              onClick={() => {
+                setSelectedIndex(i);
+                onSelectedItem(item);
+              }}>
+              {item}
+            </ListItem>
+          );
+        })}
+    </List>
 
 
 
