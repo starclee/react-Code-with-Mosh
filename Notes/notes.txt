@@ -404,6 +404,32 @@ ex:
         })}
     </List>
 
+C3- le6 inline styles :
+
+we can mention the styles in the jsx file like html inline style attributes.
+note* : css properties name must be in the camelCase.
+ex:
+style = {{backgroundColor: "skyblue"}}.
+
+le7 - UI libraries :
+
+bootstrap, Material UI (google products), DaisyUI, Chakra UI, Tailwind CSS(utility first css).
+
+le8- react icons:
+
+npm i react-icons
+
+react-icons page to pick the name of the icon by package name along with it.
+
+import it like this,
+ex:
+import {AiFillGift} from "react-icons/ai";
+
+<AiFillGift color="skyblue" size="30"/> /// it's also allowing the inline property.
+
+le 11 - summary added in the notes - 3- Styling Components.pdf - check it Out
+
+
 
 
 

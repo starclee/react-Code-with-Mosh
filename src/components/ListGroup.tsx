@@ -34,6 +34,7 @@ function ListGroup({ items, title, onSelectedItem }: Props) {
             <ListItem
               active={i === selectedIndex}
               key={i}
+              // style = {{backgroundColor: "skyblue"}}
               // className={
               //   selectedIndex === i
               //     ? "list-group-item active"
